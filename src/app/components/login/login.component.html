@@ -1,0 +1,43 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <h1 class="title">The Price Is Right</h1>
+    <p class="subtitle">Connecte-toi à ton compte</p>
+
+    <div class="p-fluid">
+      <div class="field">
+        <label for="login">Login</label>
+        <span class="p-input-icon-left">
+          <i class="pi pi-user"></i>
+          <input pInputText id="login" [(ngModel)]="login" />
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="password">Mot de passe</label>
+        <span class="p-input-icon-left">
+          <i class="pi pi-lock"></i>
+          <input pPassword id="password" [(ngModel)]="password" [feedback]="false" />
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="role">Rôle</label>
+        <p-dropdown
+          id="role"
+          [options]="roles"
+          [(ngModel)]="selectedRole"
+          placeholder="Choisis un rôle"
+          class="w-full"
+        ></p-dropdown>
+      </div>
+
+      <button
+        pButton
+        type="button"
+        label="Se connecter"
+        class="p-button-rounded p-button-lg login-button"
+        (click)="onLogin()"
+      ></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffe259, #ffa751);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.login-card {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  text-align: center;
+  color: #d62828;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+.login-button {
+  margin-top: 1.5rem;
+  background-color: #d62828;
+  border: none;
+  color: white;
+}
+
+.login-button:hover {
+  background-color: #a81f1f;
+}

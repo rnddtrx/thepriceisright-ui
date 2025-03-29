@@ -1,0 +1,10 @@
+<p>Product List</p>
+
+<p>List of product</p>
+<ul>
+  <li *ngFor="let product of productPage?.content">
+    <p>{{ product.name }}</p>
+    <p>{{ product.brand }}</p>
+    <p>{{ product.description }}</p>
+  </li>
+</ul>
