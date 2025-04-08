@@ -8,3 +8,9 @@
     <p>{{ product.description }}</p>
   </li>
 </ul>
+
+<p-paginator (onPageChange)="myOnPageChange($event)"
+             [first]="first"
+             [rows]="rows"
+             [totalRecords]="totalRecords"
+             [rowsPerPageOptions]="[10, 20, 30]" />

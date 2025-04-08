@@ -12,7 +12,15 @@ export const routes: Routes = [
       children: [
         { path: '', component: HomeComponent },
         { path: 'home', redirectTo: '', pathMatch: 'full' },
-        { path: 'product', component: ProductListComponent },
+        {
+          path: 'products/page/:page/rows/:rows',
+          component: ProductListComponent
+        },
+        {
+          path: 'products',
+          redirectTo: 'products/page/0/rows/10',
+          pathMatch: 'full'
+        }
         //{ path: 'product/details/:id', component: ProductListComponent}
       ]
     },
