@@ -25,6 +25,7 @@ export class ProductListComponent implements OnInit {
   totalRecords: number = 0;
   rows: number = 10;
   first: number = 0;
+  page: number = 0;
   productPage!: PagedResponse<Product>;
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class ProductListComponent implements OnInit {
       const page = +(params.get('page') || '0');
       const rows = +(params.get('rows') || '10');
 
+      this.page = page
       this.first = page * rows;
       this.rows = rows;
 
@@ -40,7 +42,8 @@ export class ProductListComponent implements OnInit {
   }
 
   getPage() {
-    this.productService.getAllProductsPaged(this.first, this.rows).subscribe((response) => {
+    console.log("First :"+this.page,"Rows :"+this.rows);
+    this.productService.getAllProductsPaged(this.page, this.rows).subscribe((response) => {
       console.log(response);
       this.productPage = response;
       this.totalRecords = response.totalElements;
