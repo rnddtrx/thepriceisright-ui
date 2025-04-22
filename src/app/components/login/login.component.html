@@ -3,12 +3,12 @@
     <h1 class="title">The Price Is Right</h1>
     <p class="subtitle">Connecte-toi à ton compte</p>
 
-    <div class="p-fluid">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-fluid">
       <div class="field">
         <label for="login">Login</label>
         <span class="p-input-icon-left">
           <i class="pi pi-user"></i>
-          <input pInputText id="login" [(ngModel)]="login" />
+          <input pInputText id="login" formControlName="username" />
         </span>
       </div>
 
@@ -16,7 +16,7 @@
         <label for="password">Mot de passe</label>
         <span class="p-input-icon-left">
           <i class="pi pi-lock"></i>
-          <input pPassword id="password" [(ngModel)]="password" [feedback]="false" />
+          <input pPassword id="password" formControlName="password" [feedback]="false" />
         </span>
       </div>
 
@@ -25,19 +25,21 @@
         <p-dropdown
           id="role"
           [options]="roles"
-          [(ngModel)]="selectedRole"
+          formControlName="role"
           placeholder="Choisis un rôle"
           class="w-full"
+          optionLabel="label"
+          optionValue="value"
         ></p-dropdown>
       </div>
 
       <button
         pButton
-        type="button"
+        type="submit"
         label="Se connecter"
         class="p-button-rounded p-button-lg login-button"
-        (click)="onLogin()"
       ></button>
-    </div>
+    </form>
   </div>
 </div>
+

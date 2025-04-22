@@ -3,16 +3,18 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {PagedResponse} from '../models/paged-response.model';
 import {Product} from '../models/product.model';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  private baseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
 
   // api url
-  private apiUrl = 'http://localhost:8080/api/adminupload';
+  private apiUrl = this.baseUrl+'/adminupload';
 
   // method to get all products paged using http client
   public getAllProductsPaged(page: number, size: number):Observable<PagedResponse<Product>> {

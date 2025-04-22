@@ -1,0 +1,10 @@
+::ng-deep .form-card {
+  max-width: 750px;
+}
+
+@layer utilities {
+  .form-card {
+    max-width: 750px;
+    margin: auto;
+  }
+}

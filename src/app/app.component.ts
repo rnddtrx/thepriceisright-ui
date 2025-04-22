@@ -8,10 +8,11 @@ import {Badge} from 'primeng/badge';
 import {NgClass} from '@angular/common';
 import {Avatar} from 'primeng/avatar';
 import {OverlayBadge} from 'primeng/overlaybadge';
+import {Toast} from 'primeng/toast';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Toast],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

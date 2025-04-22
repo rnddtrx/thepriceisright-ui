@@ -16,9 +16,9 @@ import {RouterOutlet} from '@angular/router';
 })
 export class MainLayoutComponent {
   menuItems: MenuItem[] = [
-    { label: 'Dashboard', icon: 'pi pi-home' },
-    { label: 'Settings', icon: 'pi pi-cog' },
-    { label: 'Profile', icon: 'pi pi-user' }
+    { label: 'Super Admin', icon: 'pi pi pi-wrench', routerLink: 'superadmin' },
+    { label: 'Create user', icon: 'pi pi-user', routerLink: 'users/create' },
+    { label: 'Profile', icon: 'pi pi-user', routerLink: 'profile' },
   ];
 
 }

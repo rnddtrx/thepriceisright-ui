@@ -1,0 +1,59 @@
+<div class="flex justify-content-center mt-5">
+  <p-card class="form-card w-full">
+    <ng-template pTemplate="header">
+      <h2 class="m-0">User Form</h2>
+    </ng-template>
+
+    <form [formGroup]="userForm" (ngSubmit)="submit()" class="p-fluid grid m-0" style="max-width: 750px; margin: auto;">
+
+      <div class="col-12 md:col-6 p-2">
+        <input pInputText formControlName="userName" placeholder="Username" class="w-full" />
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <input pInputText formControlName="firstName" placeholder="First Name" class="w-full" />
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <input pInputText formControlName="lastName" placeholder="Last Name" class="w-full" />
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <input pInputText formControlName="address" placeholder="Address" class="w-full" />
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <input pInputText formControlName="postalCode" placeholder="Postal Code" class="w-full" />
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <input pInputText formControlName="city" placeholder="City" class="w-full" />
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <input pInputText formControlName="country" placeholder="Country" class="w-full" />
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <input pInputText formControlName="phoneNumber" placeholder="Phone Number" class="w-full" />
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <input pInputText formControlName="email" placeholder="Email" type="email" class="w-full" />
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <p-calendar formControlName="dateOfBirth" placeholder="Date of Birth" showIcon class="w-full"></p-calendar>
+      </div>
+
+      <div class="col-12 md:col-6 p-2">
+        <p-password formControlName="password" placeholder="Password" [toggleMask]="true" class="w-full"></p-password>
+      </div>
+
+      <div class="col-12 flex justify-content-end p-2">
+        <button pButton type="submit" label="Submit" [disabled]="userForm.invalid"></button>
+      </div>
+
+    </form>
+  </p-card>
+</div>

@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {InputText} from 'primeng/inputtext';
 import {PasswordDirective} from 'primeng/password';
 import {DropdownModule} from 'primeng/dropdown';
 import {ButtonDirective} from 'primeng/button';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {UserEntityProfileDto} from '../../models/user-profile.model';
+import {AuthenticationService} from '../../services/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,21 +15,48 @@ import {FormsModule} from '@angular/forms';
     PasswordDirective,
     DropdownModule,
     ButtonDirective,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
-  login: string = '';
-  password: string = '';
-  selectedRole: string = '';
-  roles: string[] = ['Admin', 'Joueur', 'Spectateur'];
+export class LoginComponent implements OnInit{
+  loginForm!: FormGroup;
+  roles = [
+    { label: 'Admin', value: 'admin' },
+    { label: 'Utilisateur', value: 'user' }
+  ];
 
-  onLogin() {
-    console.log('Login:', this.login);
-    console.log('Mot de passe:', this.password);
-    console.log('Rôle:', this.selectedRole);
-    // Ici tu peux appeler un service pour l'authentification
+
+  constructor(private authenticationService: AuthenticationService,
+              private fb: FormBuilder,
+              private router: Router) {
   }
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      username: [''],
+      password: [''],
+      role: ['']
+    })
+  }
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const { username, password } = this.loginForm.value;
+      this.authenticationService.authenticate(username, password).subscribe({
+        next: (user: UserEntityProfileDto) => {
+          console.log(user);
+          this.authenticationService.setUser(user);
+          void this.router.navigate(['app/home']);
+        },
+        error: (error) => {
+          console.error('Authentication failed', error);
+        }
+      });
+    }
+  }
+
+
 }

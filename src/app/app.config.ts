@@ -7,6 +7,7 @@ import {providePrimeNG} from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi} from '@angular/common/http';
 import {authInterceptor} from './auth.interceptor';
+import {MessageService} from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
                 theme: {
                   preset: Aura
                 }
-              })
+              }),
+              MessageService
   ]
 };
