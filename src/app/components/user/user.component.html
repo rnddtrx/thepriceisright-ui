@@ -1,2 +1,12 @@
-
-<p>{{user?.firstName}} {{user?.lastName}}</p>
+<p-card [header]="user?.firstName + ' ' + user?.lastName" [subheader]="user?.userName">
+  <ng-template pTemplate="header">
+    <img *ngIf="profileImageUrl" [src]="profileImageUrl" alt="Profile Picture"
+         width="100" height="100" style="border-radius: 50%;" />
+  </ng-template>
+  <div class="p-mt-3">
+    <p><strong>Email:</strong> {{ user?.email }}</p>
+    <p><strong>Phone:</strong> {{ user?.phoneNumber }}</p>
+    <p><strong>Address:</strong> {{ user?.address }}, {{ user?.postalCode }} {{ user?.city }}, {{ user?.country }}</p>
+    <p><strong>Date of Birth:</strong> {{ user?.dateOfBirth | date }}</p>
+  </div>
+</p-card>

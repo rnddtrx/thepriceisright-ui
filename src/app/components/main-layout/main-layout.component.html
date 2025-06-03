@@ -8,7 +8,13 @@
 
     <h2 class="m-0">The price is right ! </h2>
 
-    <p-avatar class="p-overlay-badge" image="/images/dutrieuxr_profile.png" size="xlarge" shape="circle" />
+    <app-logged-user
+      [profileImageUrl]="profileImageUrl"
+      [firstName]="user.firstName"
+      [lastName]="user.lastName"
+      [role]="role"
+      class="ml-auto"
+    />
 
   </div>
 

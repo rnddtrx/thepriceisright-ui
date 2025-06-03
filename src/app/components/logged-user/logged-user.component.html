@@ -1,0 +1,14 @@
+<div class="flex items-center gap-2 cursor-pointer" (click)="openMenu($event)">
+  <p-avatar
+    class="p-overlay-badge"
+    [image]="profileImageUrl"
+    size="large"
+    shape="circle"
+  ></p-avatar>
+  <div class="text-sm leading-tight">
+    <div>{{ firstName }} {{ lastName }}</div>
+    <div class="text-xs opacity-80">{{ role }}</div>
+  </div>
+
+  <p-contextMenu #menu [model]="menuItems"></p-contextMenu>
+</div>

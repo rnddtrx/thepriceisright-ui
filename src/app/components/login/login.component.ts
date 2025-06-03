@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular
 import {UserEntityProfileDto} from '../../models/user-profile.model';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Router} from '@angular/router';
+import {JwtTokenResponse} from '../../models/jwt-token-response.model';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +25,8 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
   roles = [
-    { label: 'Admin', value: 'admin' },
-    { label: 'Utilisateur', value: 'user' }
+    { label: 'Admin', value: 'ADMIN' },
+    { label: 'Utilisateur', value: 'USER' }
   ];
 
 
@@ -44,12 +45,14 @@ export class LoginComponent implements OnInit{
 
   onSubmit() {
     if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-      this.authenticationService.authenticate(username, password).subscribe({
-        next: (user: UserEntityProfileDto) => {
-          console.log(user);
-          this.authenticationService.setUser(user);
-          void this.router.navigate(['app/home']);
+      const { username, password, role } = this.loginForm.value;
+      this.authenticationService.authenticate(username, password, role).subscribe({
+        next: (token: JwtTokenResponse) => {
+          console.log(token);
+          this.authenticationService.setUser(token).subscribe(() => {
+            console.log("User logged in successfully");
+            this.router.navigate(['app']);
+          });
         },
         error: (error) => {
           console.error('Authentication failed', error);
