@@ -48,6 +48,8 @@ export class ProductListComponent implements OnInit {
       this.productPage = response;
       this.totalRecords = response.totalElements;
     });
+
+    console.log("Total Records: " + this.totalRecords);
   }
 
   myOnPageChange($event: PaginatorState) {
