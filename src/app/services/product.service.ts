@@ -14,7 +14,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   // api url
-  private apiUrl = this.baseUrl+'/adminupload';
+  private apiUrl = this.baseUrl+'/products';
 
   // method to get all products paged using http client
   public getAllProductsPaged(page: number, size: number):Observable<PagedResponse<Product>> {
